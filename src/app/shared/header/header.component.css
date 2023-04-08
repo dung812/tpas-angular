@@ -1,0 +1,17 @@
+header{
+}
+
+.nav {
+  list-style: none;
+}
+
+.nav-items {
+  display: inline;
+  margin-right: 18px;
+}
+
+.nav-links {
+  text-decoration: none;
+  color: white;
+  font-weight: normal;
+}
