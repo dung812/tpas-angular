@@ -1,1 +1,119 @@
-<p>add-edit-user works!</p>
+<div class="container mx-auto">
+  <h1>{{ isAddMode ? "Create" : "Update"}} user</h1>
+  <form [formGroup]="userForm" (input)="handleTyping()">
+    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 px-4 md:px-0">
+      <div class="md:col-span-5">
+        <label for="full_name">Full Name</label>
+        <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+          formControlName="name" />
+        <div *ngIf=" userForm.get('name')?.invalid && (userForm.get('name')?.dirty || userForm.get('name')?.touched)"
+          class="alert alert-danger">
+          <small class="text-red-500" *ngIf="userForm.get('name')?.errors?.['required']">Name is required.</small>
+        </div>
+
+      </div>
+
+      <div class="md:col-span-5">
+        <label for="email">Email Address</label>
+        <input type="text" name="email" id="email" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+          formControlName="email" placeholder="email@domain.com" />
+
+        <small class="">
+          Note: just enter the name of the email address. No need to enter email
+          domain.
+          <br />
+          Default: @tma.com.vn
+        </small>
+
+        <div *ngIf=" userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)"
+          class="alert alert-danger">
+          <small class="text-red-500" *ngIf="userForm.get('email')?.errors?.['required']">Email is required.</small>
+          <small class="text-red-500" *ngIf="userForm.get('email')?.errors?.['noAtSymbol']">Please enter only the text
+            before "@tma.com.vn"
+          </small>
+        </div>
+        <div>
+          <small class="text-red-500">
+            {{errorMessage}}
+          </small>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <label for="address">Position</label>
+        <input type="text" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+          formControlName="position" />
+        <div
+          *ngIf=" userForm.get('position')?.invalid && (userForm.get('position')?.dirty || userForm.get('position')?.touched)"
+          class="alert alert-danger">
+          <small class="text-red-500" *ngIf="userForm.get('position')?.errors?.['required']">Position is
+            required.</small>
+        </div>
+      </div>
+
+      <div class="md:col-span-2">
+        <label for="city">DC</label>
+        <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+          formControlName="dc" />
+        <div *ngIf=" userForm.get('dc')?.invalid && (userForm.get('dc')?.dirty || userForm.get('dc')?.touched)"
+          class="alert alert-danger">
+          <small class="text-red-500" *ngIf="userForm.get('dc')?.errors?.['required']">DC is required.</small>
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <label for="address">Grade</label>
+        <input type="number" name="address" id="address" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+          formControlName="grade" />
+        <div *ngIf=" userForm.get('grade')?.invalid && (userForm.get('grade')?.dirty || userForm.get('grade')?.touched)"
+          class="alert alert-danger">
+          <small class="text-red-500" *ngIf="userForm.get('grade')?.errors?.['required']">Grade is required.</small>
+        </div>
+      </div>
+
+      <div class="md:col-span-2">
+        <label for="city">Major</label>
+        <input type="text" name="city" id="city" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+          formControlName="major" />
+        <div *ngIf=" userForm.get('major')?.invalid && (userForm.get('major')?.dirty || userForm.get('major')?.touched)"
+          class="alert alert-danger">
+          <small class="text-red-500" *ngIf="userForm.get('major')?.errors?.['required']">Major is required.</small>
+        </div>
+      </div>
+
+      <div class="md:col-span-3" [ngClass]="isAddMode ? '' : 'd-none'">
+        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an
+          option</label>
+        <select id="countries" formControlName="role"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option selected>Choose a role</option>
+          <option value="Admin">Admin</option>
+          <option value="BOJ">BOJ</option>
+        </select>
+
+        <div *ngIf=" userForm.get('role')?.invalid && (userForm.get('role')?.dirty || userForm.get('role')?.touched)"
+          class="alert alert-danger">
+          <small class="text-red-500" *ngIf="userForm.get('role')?.errors?.['required']">Role is required.</small>
+        </div>
+      </div>
+
+      <div class="md:col-span-5 text-left">
+        <button
+          type="button"
+          class="btn-custom-loading text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          (click)="handleSubmit()"
+          [disabled]="userForm.invalid"
+          [ngClass]="loading ? 'is-loading' : ''"
+          >
+          <div class="loader"></div>
+          <span>Submit</span>
+        </button>
+        <button type="button" [routerLink]="['/user']" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+          Cancel
+        </button>
+      </div>
+
+    </div>
+  </form>
+
+</div>

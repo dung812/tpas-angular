@@ -1,0 +1,112 @@
+/* Global variable */
+:root {
+  --border-color: #e0e0e0;
+}
+
+/* Styles for .users class */
+.users {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+}
+
+/* Styles for .user__header class */
+.users .user__header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+/* Styles for .user__header__search class */
+.users .user__header .user__header__search {
+  font-size: 15px;
+}
+
+/* Styles for .user__header__search__input class */
+.users .user__header .user__header__search .user__header__search__input {
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+  font-size: 16px;
+  padding: 6px 2px;
+  width: 350px;
+}
+
+/* Styles for .users-table-container class */
+.users .users-table-container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+/* Styles for .users-table class */
+.users .users-table-container .users-table {
+  width: auto;
+  overflow: auto;
+  flex: 1;
+}
+
+/* Styles for .mat-paginator.mat-paginator class */
+.users .users-table-container .users-table .mat-paginator.mat-paginator {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 56px;
+  border-top: 1px solid var(--border-color);
+  background-color: transparent;
+  z-index: 10;
+}
+
+/* Styles for table tag within .users-table class */
+.users .users-table-container .users-table table {
+  width: auto;
+}
+
+/* Styles for .mat-column-id class */
+.users .users-table-container .users-table .mat-column-id {
+  padding: 0 16px;
+  min-width: 250px;
+  border-right: 1px solid var(--border-color);
+}
+
+/* Styles for .mat-column-name class */
+.users .users-table-container .users-table .mat-column-name {
+  padding: 0 16px;
+  min-width: 250px;
+}
+
+/* Styles for .mat-column-email class */
+.users .users-table-container .users-table .mat-column-email {
+  padding: 0 16px;
+  min-width: 250px;
+}
+
+/* Styles for .mat-column-phone class */
+.users .users-table-container .users-table .mat-column-phone {
+  padding: 0 16px;
+  min-width: 250px;
+}
+
+/* Styles for .mat-column-position class */
+.users .users-table-container .users-table .mat-column-position {
+  padding: 0 16px;
+  min-width: 250px;
+}
+
+/* Styles for .mat-column-gender class */
+.users .users-table-container .users-table .mat-column-gender {
+  padding: 0 16px;
+  min-width: 250px;
+}
+
+/* Styles for .mat-column-introduce class */
+.users .users-table-container .users-table .mat-column-introduce {
+  padding: 0 16px;
+  min-width: 300px;
+}
+
+/* Styles for .mat-column-action class */
